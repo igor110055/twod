@@ -14,6 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
+Route::get('/v1/twodhistory', [App\Http\Controllers\TwodApiController::class, 'index']); //with apiKey //errorcode
+Route::get('/v1/twodCreate', [App\Http\Controllers\TwodApiController::class, 'create']); //with apiKey //errorcode

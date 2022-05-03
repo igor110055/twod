@@ -1,0 +1,45 @@
+{
+	"info": {
+		"_postman_id": "6693585f-8c2a-4628-8ba7-9c67826a67e1",
+		"name": "2DLive",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "twodhistory",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://localhost/2DLive/public/api/v1/twodhistory?apiKey=myanmarbet",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"2DLive",
+						"public",
+						"api",
+						"v1",
+						"twodhistory"
+					],
+					"query": [
+						{
+							"key": "apiKey",
+							"value": "myanmarbet",
+							"description": "get last 7 days"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

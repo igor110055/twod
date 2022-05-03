@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
+class CreateTwodHistoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('twod_histories', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('phone')->unique();
-            $table->string('password');
-            $table->integer("status")->default(0)->comment("active or inactive");
+            $table->date('date');
+            $table->bigInteger("time_id")->unsigned();
+            $table->foreign("time_id")->references("id")->on("time_lists");
+            $table->integer("number");
+            $table->unique(["date","time_id"]);
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('twod_histories');
     }
 }
