@@ -40,28 +40,28 @@ class TwodCron extends Command
         //\Log::info("Cron is working fine");
         date_default_timezone_set("Asia/Yangon");
         $time = date('H:i',time());
-        if($time == "08:30")
+        if($time == "15:00")
         {
             TwodHistory::create([
                 "date" => date('Y-m-d'),
                 "time_id" => 1,
                 "number"  => 20
             ]);
-        }else if($time == "08:35")
+        }else if($time == "15:01")
         {
             TwodHistory::create([
                 "date" => date('Y-m-d'),
                 "time_id" => 2,
                 "number"  => 30
             ]);
-        }else if($time == "08:40")
+        }else if($time == "15:02")
         {
             TwodHistory::create([
                 "date" => date('Y-m-d'),
                 "time_id" => 3,
                 "number"  => 40
             ]);
-        }else if($time == "08:45")
+        }else if($time == "15:03")
         {
             
             TwodHistory::create([
@@ -69,7 +69,7 @@ class TwodCron extends Command
                 "time_id" => 4,
                 "number"  => 50
             ]);
-        }else if($time == "08:50")
+        }else if($time == "15:04")
         {
             TwodHistory::create([
                 "date" => date('Y-m-d'),
