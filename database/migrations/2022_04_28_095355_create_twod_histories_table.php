@@ -18,7 +18,7 @@ class CreateTwodHistoriesTable extends Migration
             $table->date('date');
             $table->bigInteger("time_id")->unsigned();
             $table->foreign("time_id")->references("id")->on("time_lists");
-            $table->integer("number");
+            $table->string("number",20);
             $table->unique(["date","time_id"]);
             $table->timestamps();
         });

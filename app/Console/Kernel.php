@@ -24,11 +24,11 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
-        $schedule->command('twod:cron')->dailyAt("10:30")->runInBackground()->timezone('Asia/Yangon');
-        $schedule->command('twod:cron')->dailyAt("12:30")->runInBackground()->timezone('Asia/Yangon');
-        $schedule->command('twod:cron')->dailyAt("14:54")->runInBackground()->timezone('Asia/Yangon');
-        $schedule->command('twod:cron')->dailyAt("16:42")->runInBackground()->timezone('Asia/Yangon');
-        $schedule->command('twod:cron')->dailyAt("18:30")->runInBackground()->timezone('Asia/Yangon');
+        $schedule->command('twod:cron')->dailyAt("08:30")->runInBackground()->timezone('Asia/Yangon');
+        $schedule->command('twod:cron')->dailyAt("08:35")->runInBackground()->timezone('Asia/Yangon');
+        $schedule->command('twod:cron')->dailyAt("08:40")->runInBackground()->timezone('Asia/Yangon');
+        $schedule->command('twod:cron')->dailyAt("08:45")->runInBackground()->timezone('Asia/Yangon');
+        $schedule->command('twod:cron')->dailyAt("08:50")->runInBackground()->timezone('Asia/Yangon');
     }
 
     /**
