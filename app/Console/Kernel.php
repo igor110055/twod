@@ -28,7 +28,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         date_default_timezone_set("Asia/Yangon");
-        $schedule->command('twod:cron')->everyMinute()->runInBackground();
+        $schedule->command('one:cron')->everyMinute()->runInBackground();
         // $schedule->command('inspire')->hourly();
         // $schedule->command('twod:cron')->timezone('Asia/Yangon')->runInBackground()->at("00:39");
         // $schedule->command('one:cron')->timezone('Asia/Yangon')->runInBackground()->at("00:40");
