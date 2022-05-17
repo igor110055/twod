@@ -6,14 +6,14 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
 use App\Models\TwodHistory;
 use Carbon\Carbon;
-class TwodCron extends Command
+class TwoCron extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'twod:cron';
+    protected $signature = 'two:cron';
 
     /**
      * The console command description.
@@ -39,75 +39,18 @@ class TwodCron extends Command
      */
     public function handle()
     {
-        
-        //\Log::info("Cron is working fine");
-        echo "handle by cronJob";
         date_default_timezone_set("Asia/Yangon");
         $time = date('H:i:s',time());
-        $number = $this->btcEth("10:30");
+        //$number = $this->recursiveFun($time);
+        //$this->info("Your Job is being processed");
+        $number = $this->btcEth("14:30");
         TwodHistory::create([
             "date" => date('Y-m-d'),
-            "time" => "10:30",
+            "time" => "14:30",
             "number"  => $number[0][1].$number[1][1],
             "currency_one" => $number[0][0],
             "currency_two" => $number[1][0]
         ]);
-        
-    }
-    //BTC
-    public function BTCBUSD($manuallyTime)
-    {
-        $response = Http::get('https://api.binance.com/api/v3/klines', [
-            'limit' => 500,
-            "symbol"=>"BTCBUSD",
-            "interval" => "1m"
-        ]);
-        $BTCBUSD = json_decode($response->body());
-        foreach($BTCBUSD as $key => $value) {
-            # code...
-            $time = Carbon::parse(date("H:i",$value[0]/1000))->setTimezone('Asia/Yangon')->format("H:i");
-            if($time == $manuallyTime)
-            {
-               $btc = explode(".",$value[4]);
-               $firstNumber  = $btc[1][1];
-               return $firstNumber;
-               break;
-            }
-        }
-    }
-    //ETHBUSD
-    public function ETHBUSD($manuallyTime)
-    {
-        $response = Http::get('https://api.binance.com/api/v3/klines', [
-            'limit' => 500,
-            "symbol"=>"ETHBUSD",
-            "interval" => "1m"
-        ]);
-        $ETHBUSD = json_decode($response->body());
-        foreach($ETHBUSD as $key => $value) {
-            # code...
-            $time = Carbon::parse(date("H:i",$value[0]/1000))->setTimezone('Asia/Yangon')->format("H:i");
-            if($time == $manuallyTime)
-            {
-               $eth = explode(".",$value[4]);
-               $secondNumber  = $eth[1][1];
-               return $secondNumber;
-               break;
-            }
-        }
-    }
-    public function recursiveFun($time)
-    {
-        $firstNumber = $this->BTCBUSD($time);
-        $secondNumber = $this->ETHBUSD($time); 
-        $number = $firstNumber.$secondNumber;
-        if($firstNumber !="" && $secondNumber !="")
-        {
-            return $number;
-        }else
-        {
-            recursiveFun($time);
-        }
     }
     public function btcEth($manuallyTime)
     {

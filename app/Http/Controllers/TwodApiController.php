@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use App\Models\TwodHistory;
+use Carbon\Carbon;
 class TwodApiController extends Controller
 {
     /**
@@ -121,5 +123,47 @@ class TwodApiController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function BTCBUSD()
+    {
+        $manuallyTime ="06:45";
+        $arr = array();
+        $response = Http::get('https://api.binance.com/api/v3/klines', [
+            'limit' => 500,
+            "symbol"=>"BTCBUSD",
+            "interval" => "1m"
+        ]);
+        $BTCBUSD = json_decode($response->body());
+        $firstNumber ="";
+        foreach ($BTCBUSD as $key => $value) {
+            # code...
+            $time = Carbon::parse(date("H:i",$value[0]/1000))->setTimezone('Asia/Yangon')->format("H:i");
+            if($time == $manuallyTime)
+            {
+               $closeV = explode(".",$value[4]);
+               $getAfterdot = str_split($closeV[1]);//after dot value
+               $firstNumber  = $getAfterdot[1];
+                $arr[0] = $value[4]."/".$firstNumber;
+            }
+        }
+        $response = Http::get('https://api.binance.com/api/v3/klines', [
+            'limit' => 500,
+            "symbol"=>"ETHBUSD",
+            "interval" => "1m"
+        ]);
+        $ETHBUSD = json_decode($response->body());
+        $secondNumber="";
+        foreach ($ETHBUSD as $key => $value) {
+            # code...
+            $time = Carbon::parse(date("H:i",$value[0]/1000))->setTimezone('Asia/Yangon')->format("H:i");
+            if($time == $manuallyTime)
+            {
+               $closeV = explode(".",$value[4]);
+               $getAfterdot = str_split($closeV[1]);//after dot value
+               $secondNumber  = $getAfterdot[1];
+                $arr[1]=$value[4]."/".$secondNumber;
+            }
+        }
+        return $arr;
     }
 }

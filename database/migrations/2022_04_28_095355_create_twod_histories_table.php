@@ -16,10 +16,13 @@ class CreateTwodHistoriesTable extends Migration
         Schema::create('twod_histories', function (Blueprint $table) {
             $table->id();
             $table->date('date');
-            $table->bigInteger("time_id")->unsigned();
-            $table->foreign("time_id")->references("id")->on("time_lists");
+            $table->string("time");
+            //$table->foreign("time")->references("name")->on("time_lists");
             $table->string("number",20);
-            $table->unique(["date","time_id"]);
+            // $table->unique(["date","time"]);
+            $table->string("currency_one",20);
+            $table->string("currency_two",20);
+            $table->unique(["date","time"]);
             $table->timestamps();
         });
     }

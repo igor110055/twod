@@ -14,6 +14,10 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         Commands\TwodCron::class,
+        Commands\OneCron::class,
+        Commands\TwoCron::class,
+        Commands\ThreeCron::class,
+        Commands\FourCron::class
     ];
     /**
      * Define the application's command schedule.
@@ -23,12 +27,14 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+        date_default_timezone_set("Asia/Yangon");
+        //$schedule->command('twod:cron')->everyMinute()->runInBackground();
         // $schedule->command('inspire')->hourly();
-        $schedule->command('twod:cron')->dailyAt("15:00")->runInBackground()->timezone('Asia/Yangon');
-        $schedule->command('twod:cron')->dailyAt("15:01")->runInBackground()->timezone('Asia/Yangon');
-        $schedule->command('twod:cron')->dailyAt("15:02")->runInBackground()->timezone('Asia/Yangon');
-        $schedule->command('twod:cron')->dailyAt("15:03")->runInBackground()->timezone('Asia/Yangon');
-        $schedule->command('twod:cron')->dailyAt("15:04")->runInBackground()->timezone('Asia/Yangon');
+        $schedule->command('twod:cron')->timezone('Asia/Yangon')->at("10:31");
+        $schedule->command('one:cron')->timezone('Asia/Yangon')->at("12:31");
+        $schedule->command('two:cron')->timezone('Asia/Yangon')->at("14:31");
+        $schedule->command('three:cron')->timezone('Asia/Yangon')->at("16:31");
+        $schedule->command('four:cron')->timezone('Asia/Yangon')->at("18:31");
     }
 
     /**
