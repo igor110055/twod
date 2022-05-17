@@ -39,6 +39,7 @@ class TwodCron extends Command
      */
     public function handle()
     {
+        info("cron is working fine in everyminute");
         
         //\Log::info("Cron is working fine");
         echo "handle by cronJob";
