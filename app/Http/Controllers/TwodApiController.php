@@ -25,7 +25,9 @@ class TwodApiController extends Controller
                 $date = strtotime("-7 day", $date);
                 $last7day =date('Y-m-d', $date);
                 $twodhistory = TwodHistory::whereDate("date",">=", $last7day)
-                            ->select("twod_histories.id","twod_histories.date","twod_histories.time","twod_histories.number","twod_histories.currency_one","twod_histories.currency_two")
+                            ->select("twod_histories.id","twod_histories.date","twod_histories.time",
+                            "twod_histories.number","twod_histories.currency_one",
+                            "twod_histories.currency_two","twod_histories.currency_one_name","twod_histories.currency_two_name")
                             ->get();
                 return response()->json([
                     'status'  => true,
@@ -132,12 +134,16 @@ class TwodApiController extends Controller
             {
                 $date = date("Y-m-d");
                 $twodhistory = TwodHistory::whereDate("date","=", $date)
-                            ->select("twod_histories.id","twod_histories.date","twod_histories.time","twod_histories.number","twod_histories.currency_one","twod_histories.currency_two")
+                            ->select("twod_histories.id","twod_histories.date","twod_histories.time",
+                                "twod_histories.number","twod_histories.currency_one","twod_histories.currency_two",
+                                "twod_histories.currency_one_name","twod_histories.currency_two_name"
+                            )
                             ->get();
+                $lists = $this->extraRespone($twodhistory);
                 return response()->json([
                     'status'  => true,
                     'msg'     => 'Get for today',
-                    'data'  => $twodhistory
+                    'data'  => $lists
                 ]);
             }else
             {
@@ -146,6 +152,23 @@ class TwodApiController extends Controller
         }else
         {
             return $this->throwUnauthenticated();
+        }
+    }
+    public function extraRespone($array)
+    {
+        $initialArray = count($array);
+        for($i=$initialArray;$i<=5;$i++)
+        {
+            $array[$i] = array(
+                "id"=>"",
+                "date"=>"",
+                "time"=>"",
+                "number"=>"",
+                "currency_one"=>"",
+                "currency_two" =>"",
+                "currency_one_name"=>"",
+                "currency_two_name"=>""
+            );
         }
     }
 }
