@@ -24,7 +24,7 @@ class CreateTwodHistoriesTable extends Migration
             $table->string("currency_two",20);
             $table->string("currency_one_name");
             $table->string("currency_two_name");
-            $table->unique(["date","time"]);
+           // $table->unique(["date","time"]);
             $table->timestamps();
         });
     }
