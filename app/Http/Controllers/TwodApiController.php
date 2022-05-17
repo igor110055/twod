@@ -123,46 +123,29 @@ class TwodApiController extends Controller
     {
         //
     }
-    public function BTCBUSD()
+    public function today(Request $request)
     {
-        $manuallyTime ="06:45";
-        $arr = array();
-        $response = Http::get('https://api.binance.com/api/v3/klines', [
-            'limit' => 500,
-            "symbol"=>"BTCBUSD",
-            "interval" => "1m"
-        ]);
-        $BTCBUSD = json_decode($response->body());
-        $firstNumber ="";
-        foreach ($BTCBUSD as $key => $value) {
-            # code...
-            $time = Carbon::parse(date("H:i",$value[0]/1000))->setTimezone('Asia/Yangon')->format("H:i");
-            if($time == $manuallyTime)
+        date_default_timezone_set("Asia/Yangon");
+        if($request->has("apiKey"))
+        {
+            if($request->apiKey == "myanmarbet")
             {
-               $closeV = explode(".",$value[4]);
-               $getAfterdot = str_split($closeV[1]);//after dot value
-               $firstNumber  = $getAfterdot[1];
-                $arr[0] = $value[4]."/".$firstNumber;
-            }
-        }
-        $response = Http::get('https://api.binance.com/api/v3/klines', [
-            'limit' => 500,
-            "symbol"=>"ETHBUSD",
-            "interval" => "1m"
-        ]);
-        $ETHBUSD = json_decode($response->body());
-        $secondNumber="";
-        foreach ($ETHBUSD as $key => $value) {
-            # code...
-            $time = Carbon::parse(date("H:i",$value[0]/1000))->setTimezone('Asia/Yangon')->format("H:i");
-            if($time == $manuallyTime)
+                $date = date("Y-m-d");
+                $twodhistory = TwodHistory::whereDate("date","=", $date)
+                            ->select("twod_histories.id","twod_histories.date","twod_histories.time","twod_histories.number","twod_histories.currency_one","twod_histories.currency_two")
+                            ->get();
+                return response()->json([
+                    'status'  => true,
+                    'msg'     => 'Get for today',
+                    'data'  => $twodhistory
+                ]);
+            }else
             {
-               $closeV = explode(".",$value[4]);
-               $getAfterdot = str_split($closeV[1]);//after dot value
-               $secondNumber  = $getAfterdot[1];
-                $arr[1]=$value[4]."/".$secondNumber;
+                return $this->throwWrongCredentials();
             }
+        }else
+        {
+            return $this->throwUnauthenticated();
         }
-        return $arr;
     }
 }
