@@ -43,10 +43,10 @@ class TwoCron extends Command
         $time = date('H:i:s',time());
         //$number = $this->recursiveFun($time);
         //$this->info("Your Job is being processed");
-        $number = $this->btcEth("02:17");
+        $number = $this->btcEth("02:45");
         TwodHistory::create([
             "date" => date('Y-m-d'),
-            "time" => "02:17",
+            "time" => "02:45",
             "number"  => $number[0][1].$number[1][1],
             "currency_one" => $number[0][0],
             "currency_two" => $number[1][0],
