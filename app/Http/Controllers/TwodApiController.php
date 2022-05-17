@@ -157,7 +157,7 @@ class TwodApiController extends Controller
     public function extraRespone($array)
     {
         $initialArray = count($array);
-        for($i=$initialArray;$i<=5;$i++)
+        for($i=$initialArray;$i<5;$i++)
         {
             $array[$i] = array(
                 "id"=>"",
@@ -170,5 +170,6 @@ class TwodApiController extends Controller
                 "currency_two_name"=>""
             );
         }
+        return $array;
     }
 }
