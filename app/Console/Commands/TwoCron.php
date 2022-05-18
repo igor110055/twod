@@ -43,11 +43,11 @@ class TwoCron extends Command
         $time = date('H:i:s',time());
         //$number = $this->recursiveFun($time);
         //$this->info("Your Job is being processed");
-        $time = "14:30";
+        $time = "23:16";
         $number = $this->btcEth($time);
         TwodHistory::create([
             "date" => date('Y-m-d'),
-            "time" => "14:30",
+            "time" => "23:16",
             "number"  => $number[0][1].$number[1][1],
             "currency_one" => $number[0][0],
             "currency_two" => $number[1][0],
@@ -59,7 +59,7 @@ class TwoCron extends Command
     {
         $arr = array();
         $response = Http::get('https://api.binance.com/api/v3/klines', [
-            "limit" => 10,
+            "limit" => 20,
             "symbol"=>"BTCBUSD",
             "interval" => "1m",
         ]);
@@ -76,7 +76,7 @@ class TwoCron extends Command
             }
         }
         $response = Http::get('https://api.binance.com/api/v3/klines', [
-            "limit" => 10,
+            "limit" => 20,
             "symbol"=>"ETHBUSD",
             "interval" => "1m",
         ]);

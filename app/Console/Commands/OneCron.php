@@ -43,11 +43,11 @@ class OneCron extends Command
         $time = date('H:i:s',time());
         //$number = $this->recursiveFun($time);
         //$this->info("Your Job is being processed");
-        $time = "12:30";
+        $time = "23:18";
         $number = $this->btcEth($time);
         TwodHistory::create([
             "date" => date('Y-m-d'),
-            "time" => "12:30",
+            "time" => "23:19",
             "number"  => $number[0][1].$number[1][1],
             "currency_one" => $number[0][0],
             "currency_two" => $number[1][0],
@@ -59,9 +59,9 @@ class OneCron extends Command
     {
         $arr = array();
         $response = Http::get('https://api.binance.com/api/v3/klines', [
-            "limit" => 10,
+            'limit' => 20,
             "symbol"=>"BTCBUSD",
-            "interval" => "1m",
+            "interval" => "1m"
         ]);
         $BTCBUSD = json_decode($response->body());
         foreach ($BTCBUSD as $key => $value) {
@@ -76,9 +76,9 @@ class OneCron extends Command
             }
         }
         $response = Http::get('https://api.binance.com/api/v3/klines', [
-            "limit" => 10,
+            'limit' => 20,
             "symbol"=>"ETHBUSD",
-            "interval" => "1m",
+            "interval" => "1m"
         ]);
         $ETHBUSD = json_decode($response->body());
         foreach ($ETHBUSD as $key => $value) {

@@ -44,11 +44,11 @@ class TwodCron extends Command
         //\Log::info("Cron is working fine");
         echo "handle by cronJob";
         date_default_timezone_set("Asia/Yangon");
-        $time = "10:30";
+        $time = "23:15";
         $number = $this->btcEth($time);
         TwodHistory::create([
             "date" => date('Y-m-d'),
-            "time" => "10:30",
+            "time" => "23:15",
             "number"  => $number[0][1].$number[1][1],
             "currency_one" => $number[0][0],
             "currency_two" => $number[1][0],
@@ -116,9 +116,9 @@ class TwodCron extends Command
     {
         $arr = array();
         $response = Http::get('https://api.binance.com/api/v3/klines', [
+            'limit' => 20,
             "symbol"=>"BTCBUSD",
-            "interval" => "1m",
-            "limit" => 10
+            "interval" => "1m"
         ]);
         $BTCBUSD = json_decode($response->body());
         foreach ($BTCBUSD as $key => $value) {
@@ -133,9 +133,9 @@ class TwodCron extends Command
             }
         }
         $response = Http::get('https://api.binance.com/api/v3/klines', [
+            'limit' => 20,
             "symbol"=>"ETHBUSD",
-            "interval" => "1m",
-            "limit" => 10
+            "interval" => "1m"
         ]);
         $ETHBUSD = json_decode($response->body());
         foreach ($ETHBUSD as $key => $value) {
