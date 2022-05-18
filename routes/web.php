@@ -56,4 +56,4 @@ use Carbon\Carbon;
 //     // echo Carbon::parse(date("H:i","1652551199999"))->setTimezone('Asia/Yangon')->format("d-m-Y H:i A");
    
 // });
-Route::get('/',[App\Http\Controllers\TwodApiController::class, 'BTCBUSD']);
+Route::get('/',[App\Http\Controllers\TwodApiController::class, 'btcEth']);

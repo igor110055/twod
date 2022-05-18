@@ -20,7 +20,7 @@ class ThreeCron extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = '16:30';
 
     /**
      * Create a new command instance.
@@ -41,8 +41,8 @@ class ThreeCron extends Command
     {
         echo "handle by cronJob";
         date_default_timezone_set("Asia/Yangon");
-        $time = date('H:i:s',time());
-        $number = $this->btcEth("16:30");
+        $time = date('d-m-Y')." "."16:30";
+        $number = $this->btcEth($time);
         TwodHistory::create([
             "date" => date('Y-m-d'),
             "time" => "16:30",
@@ -59,7 +59,8 @@ class ThreeCron extends Command
         $response = Http::get('https://api.binance.com/api/v3/klines', [
             'limit' => 500,
             "symbol"=>"BTCBUSD",
-            "interval" => "1m"
+            "interval" => "1m",
+            "limit" => 10
         ]);
         $BTCBUSD = json_decode($response->body());
         foreach ($BTCBUSD as $key => $value) {
@@ -76,7 +77,8 @@ class ThreeCron extends Command
         $response = Http::get('https://api.binance.com/api/v3/klines', [
             'limit' => 500,
             "symbol"=>"ETHBUSD",
-            "interval" => "1m"
+            "interval" => "1m",
+            "limit" => 10
         ]);
         $ETHBUSD = json_decode($response->body());
         foreach ($ETHBUSD as $key => $value) {

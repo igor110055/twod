@@ -172,4 +172,47 @@ class TwodApiController extends Controller
         }
         return $array;
     }
+    public function btcEth()
+    {
+        $manuallyTime = "18-05-2022 12:30:00";
+        $arr = array();
+        $response = Http::get('https://api.binance.com/api/v3/klines', [
+            'limit' => 500,
+            "symbol"=>"BTCBUSD",
+            "interval" => "1m"
+        ]);
+        $BTCBUSD = json_decode($response->body());
+        //print_r($BTCBUSD);
+        foreach ($BTCBUSD as $key => $value) {
+            # code...
+            $time = Carbon::parse($value[0]/1000)->setTimezone('Asia/Yangon')->format("d-m-Y H:i:s");
+            if($time == $manuallyTime)
+            {
+               $closeV = explode(".",$value[4]);
+               $getAfterdot = str_split($closeV[1]);//after dot value
+               $firstNumber  = $getAfterdot[1];
+                $arr[0] = array($value[4],$firstNumber);
+            }
+        }
+        $response = Http::get('https://api.binance.com/api/v3/klines', [
+            'limit' => 500,
+            "symbol"=>"ETHBUSD",
+            "interval" => "1m"
+        ]);
+        $ETHBUSD = json_decode($response->body());
+        foreach ($ETHBUSD as $key => $value) {
+            # code...
+            $time = Carbon::parse($value[0]/1000)->setTimezone('Asia/Yangon')->format("d-m-Y H:i:s");
+            if($time == $manuallyTime)
+            {
+               $closeV = explode(".",$value[4]);
+               $getAfterdot = str_split($closeV[1]);//after dot value
+               $secondNumber  = $getAfterdot[1];
+                $arr[1]=array($value[4],$secondNumber);
+            }
+            echo  Carbon::parse($value[0]/1000)->setTimezone('Asia/Yangon')->format("d-m-Y H:i:s")."/=>Value".$value[4];
+            echo "<br/>";
+        }
+        return $arr;
+    }
 }

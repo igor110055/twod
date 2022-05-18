@@ -20,7 +20,7 @@ class TwodCron extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = '10:30';
 
     /**
      * Create a new command instance.
@@ -44,8 +44,8 @@ class TwodCron extends Command
         //\Log::info("Cron is working fine");
         echo "handle by cronJob";
         date_default_timezone_set("Asia/Yangon");
-        $time = date('H:i:s',time());
-        $number = $this->btcEth("10:30");
+        $time = date('d-m-Y')." "."10:30";
+        $number = $this->btcEth($time);
         TwodHistory::create([
             "date" => date('Y-m-d'),
             "time" => "10:30",
@@ -118,7 +118,8 @@ class TwodCron extends Command
         $response = Http::get('https://api.binance.com/api/v3/klines', [
             'limit' => 500,
             "symbol"=>"BTCBUSD",
-            "interval" => "1m"
+            "interval" => "1m",
+            "limit" => 10
         ]);
         $BTCBUSD = json_decode($response->body());
         foreach ($BTCBUSD as $key => $value) {
@@ -135,7 +136,8 @@ class TwodCron extends Command
         $response = Http::get('https://api.binance.com/api/v3/klines', [
             'limit' => 500,
             "symbol"=>"ETHBUSD",
-            "interval" => "1m"
+            "interval" => "1m",
+            "limit" => 10
         ]);
         $ETHBUSD = json_decode($response->body());
         foreach ($ETHBUSD as $key => $value) {
