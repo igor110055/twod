@@ -174,6 +174,7 @@ class TwodApiController extends Controller
     }
     public function btcEth()
     {
+        echo  Carbon::parse(1652892780000/1000)->setTimezone('Asia/Yangon')->format("d-m-Y H:i:s"); 
         $manuallyTime = "18-05-2022 12:30:00";
         $arr = array();
         $response = Http::get('https://api.binance.com/api/v3/klines', [
