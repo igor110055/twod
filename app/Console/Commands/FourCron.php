@@ -41,7 +41,7 @@ class FourCron extends Command
     {
         echo "handle by cronJob";
         date_default_timezone_set("Asia/Yangon");
-        $time = date('d-m-Y')." "."18:30";
+        $time = "18:30";
         $number = $this->btcEth($time);
         TwodHistory::create([
             "date" => date('Y-m-d'),

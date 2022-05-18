@@ -44,7 +44,7 @@ class TwodCron extends Command
         //\Log::info("Cron is working fine");
         echo "handle by cronJob";
         date_default_timezone_set("Asia/Yangon");
-        $time = date('d-m-Y')." "."10:30";
+        $time = "10:30";
         $number = $this->btcEth($time);
         TwodHistory::create([
             "date" => date('Y-m-d'),
