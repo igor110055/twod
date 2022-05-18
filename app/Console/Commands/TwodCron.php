@@ -116,7 +116,6 @@ class TwodCron extends Command
     {
         $arr = array();
         $response = Http::get('https://api.binance.com/api/v3/klines', [
-            'limit' => 500,
             "symbol"=>"BTCBUSD",
             "interval" => "1m",
             "limit" => 10
@@ -134,7 +133,6 @@ class TwodCron extends Command
             }
         }
         $response = Http::get('https://api.binance.com/api/v3/klines', [
-            'limit' => 500,
             "symbol"=>"ETHBUSD",
             "interval" => "1m",
             "limit" => 10
