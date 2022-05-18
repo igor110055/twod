@@ -30,11 +30,11 @@ class Kernel extends ConsoleKernel
         date_default_timezone_set("Asia/Yangon");
         //$schedule->command('twod:cron')->everyMinute()->runInBackground();
         // $schedule->command('inspire')->hourly();
-        $schedule->command('twod:cron')->timezone('Asia/Yangon')->runInBackground()->at("22:10");
-        $schedule->command('one:cron')->timezone('Asia/Yangon')->runInBackground()->at("22:11");
-        $schedule->command('two:cron')->timezone('Asia/Yangon')->runInBackground()->at("22:12");
-        $schedule->command('three:cron')->timezone('Asia/Yangon')->runInBackground()->at("22:13");
-        $schedule->command('four:cron')->timezone('Asia/Yangon')->runInBackground()->at("22:14");
+        $schedule->command('twod:cron')->timezone('Asia/Yangon')->runInBackground()->at("22:30");
+        $schedule->command('one:cron')->timezone('Asia/Yangon')->runInBackground()->at("22:31");
+        $schedule->command('two:cron')->timezone('Asia/Yangon')->runInBackground()->at("22:32");
+        $schedule->command('three:cron')->timezone('Asia/Yangon')->runInBackground()->at("22:33");
+        $schedule->command('four:cron')->timezone('Asia/Yangon')->runInBackground()->at("22:34");
     
     }
 
