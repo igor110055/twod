@@ -41,11 +41,11 @@ class FourCron extends Command
     {
         echo "handle by cronJob";
         date_default_timezone_set("Asia/Yangon");
-        $time ="23:39";
+        $time ="18:30";
         $number = $this->btcEth($time);
         TwodHistory::create([
             "date" => date('Y-m-d'),
-            "time" => "23:39",
+            "time" => $time,
             "number"  => $number[0][1].$number[1][1],
             "currency_one" => $number[0][0],
             "currency_two" => $number[1][0],
