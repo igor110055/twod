@@ -133,10 +133,10 @@ class TwodApiController extends Controller
             if($request->apiKey == "myanmarbet")
             {
                 $date = date("Y-m-d");
-                $twodhistory = TwodHistory::whereDate("date","=", $date)
-                            ->select("twod_histories.id","twod_histories.date","twod_histories.time",
-                                "twod_histories.number","twod_histories.currency_one","twod_histories.currency_two",
-                                "twod_histories.currency_one_name","twod_histories.currency_two_name"
+                $twodhistory = TwodHistory::whereDate("date", $date)
+                            ->select("id","date","time",
+                                "number","currency_one","currency_two",
+                                "currency_one_name","currency_two_name"
                             )
                             ->get();
                 $lists = $this->extraRespone($twodhistory);
@@ -181,9 +181,9 @@ class TwodApiController extends Controller
             "interval" => "1m"
         ]);
         $BTCBUSD = json_decode($response->body());
-        $count = count($BTCBUSD);
+        //$count = count($BTCBUSD);
         # code...
-        //$time = Carbon::parse(date("H:i",$BTCBUSD[$count - 2][0]/1000))->setTimezone('Asia/Yangon')->format("H:i:u");
+        $time = Carbon::parse(date("H:i",$BTCBUSD[$count - 2][0]/1000))->setTimezone('Asia/Yangon')->format("H:i:u");
         $closeV = explode(".",$BTCBUSD[$count - 2][4]);
         $getAfterdot = str_split($closeV[1]);//after dot value
         $firstNumber  = $getAfterdot[1];
