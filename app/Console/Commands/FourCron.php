@@ -42,7 +42,7 @@ class FourCron extends Command
         echo "handle by cronJob";
         date_default_timezone_set("Asia/Yangon");
         $time ="18:30";
-        $number = $this->btcEth();
+        $number = $this->btcEth($time);
         TwodHistory::create([
             "date" => date('Y-m-d'),
             "time" => $time,
@@ -53,35 +53,43 @@ class FourCron extends Command
             "currency_two_name"  => "ETHBUSD"
         ]);
     }
-    public function btcEth()
+    public function btcEth($manuallyTime)
     {
         $arr = array();
         $response = Http::get('https://api.binance.com/api/v3/klines', [
-            'limit' => 20,
+            "limit" => 20,
             "symbol"=>"BTCBUSD",
-            "interval" => "1m"
+            "interval" => "1m",
         ]);
         $BTCBUSD = json_decode($response->body());
-        $count = count($BTCBUSD);
-        # code...
-        //$time = Carbon::parse(date("H:i",$BTCBUSD[$count - 2][0]/1000))->setTimezone('Asia/Yangon')->format("H:i:u");
-        $closeV = explode(".",$BTCBUSD[$count - 2][4]);
-        $getAfterdot = str_split($closeV[1]);//after dot value
-        $firstNumber  = $getAfterdot[1];
-        $arr[0] = array($BTCBUSD[$count -2][4],$firstNumber);
-            
+        foreach ($BTCBUSD as $key => $value) {
+            # code...
+            $time = Carbon::parse(date("H:i",$value[0]/1000))->setTimezone('Asia/Yangon')->format("H:i");
+            if($time == $manuallyTime)
+            {
+               $closeV = explode(".",$value[4]);
+               $getAfterdot = str_split($closeV[1]);//after dot value
+               $firstNumber  = $getAfterdot[1];
+                $arr[0] = array($value[4],$firstNumber);
+            }
+        }
         $response = Http::get('https://api.binance.com/api/v3/klines', [
-            'limit' => 20,
+            "limit" => 20,
             "symbol"=>"ETHBUSD",
-            "interval" => "1m"
+            "interval" => "1m",
         ]);
         $ETHBUSD = json_decode($response->body());
-        $count = count($ETHBUSD);
-        //$time = Carbon::parse(date("H:i",$ETHBUSD[$count - 1][0]/1000))->setTimezone('Asia/Yangon')->format("H:i");
-        $closeV = explode(".",$ETHBUSD[$count - 2][4]);
-        $getAfterdot = str_split($closeV[1]);//after dot value
-        $secondNumber  = $getAfterdot[1];
-        $arr[1]=array($ETHBUSD[$count - 2][4],$secondNumber);
+        foreach ($ETHBUSD as $key => $value) {
+            # code...
+            $time = Carbon::parse(date("H:i",$value[0]/1000))->setTimezone('Asia/Yangon')->format("H:i");
+            if($time == $manuallyTime)
+            {
+               $closeV = explode(".",$value[4]);
+               $getAfterdot = str_split($closeV[1]);//after dot value
+               $secondNumber  = $getAfterdot[1];
+               $arr[1]=array($value[4],$secondNumber);
+            }
+        }
         return $arr;
     }
 }
