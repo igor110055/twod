@@ -49,8 +49,8 @@ class TwoCron extends Command
             "date" => date('Y-m-d'),
             "time" => $time,
             "number"  => $number[0][1].$number[1][1],
-            "currency_one" => number_format($number[0][0],2),
-            "currency_two" => number_format($number[1][0],2),
+            "currency_one" => number_format($number[0][0],3),
+            "currency_two" => number_format($number[1][0],3),
             "currency_one_name" => "BTC/BUSD",
             "currency_two_name"  => "ETH/BUSD"
         ]);
