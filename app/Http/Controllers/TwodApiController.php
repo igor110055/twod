@@ -25,16 +25,16 @@ class TwodApiController extends Controller
                     //last 7 day
                     $date = date("Y-m-d");
                     $date = strtotime($date);
-                    $date = strtotime("-7 day", $date);
-                    $last7day =date('Y-m-d', $date);
-                    $twodhistory = TwodHistory::whereDate("date",">=", $last7day)
+                    $date = strtotime("-5 day", $date);
+                    $last5day =date('Y-m-d', $date);
+                    $twodhistory = TwodHistory::whereDate("date",">=", $last5day)
                                 ->select("twod_histories.id","twod_histories.date","twod_histories.time",
                                 "twod_histories.number","twod_histories.currency_one",
                                 "twod_histories.currency_two","twod_histories.currency_one_name","twod_histories.currency_two_name")
                                 ->get();
                     return response()->json([
                         'status'  => true,
-                        'msg'     => 'Get last 7 days',
+                        'msg'     => 'Get last 5 days',
                         'data'  => $twodhistory
                     ]);
                 }else if($request->get("categoryId") == 0)
@@ -181,19 +181,37 @@ class TwodApiController extends Controller
     public function extraRespone($array)
     {
         $initialArray = count($array);
+        date_default_timezone_set("Asia/Yangon");
         for($i=$initialArray;$i<5;$i++)
         {
+          if($i == 0)
+          {
+              $time ="10:30";
+          }else if($i == 1)
+          {
+              $time ="12:30";
+          }else if($i == 2)
+          {
+              $time = "14:30";
+          }else if($i == 3)
+          {
+              $time = "16:30";
+          }else if($i == 4)
+          {
+              $time = "18:30";
+          }
             $array[$i] = array(
-                "id"=>"",
-                "date"=>"",
-                "time"=>"",
+                "id"=>0,
+                "date"=> date("Y-m-d"),
+                "time"=> $time,
                 "number"=>"",
-                "currency_one"=>"",
-                "currency_two" =>"",
-                "currency_one_name"=>"",
-                "currency_two_name"=>""
+                "currency_one"=> 0,
+                "currency_two" => 0,
+                "currency_one_name"=> 0,
+                "currency_two_name"=>0
             );
         }
+
         return $array;
     }
     public function btcEth()
