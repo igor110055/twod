@@ -41,14 +41,14 @@ class FourCron extends Command
     {
         echo "handle by cronJob";
         date_default_timezone_set("Asia/Yangon");
-        $time ="18:30";
+        $time ="17:59";
         $number = $this->btcEth($time);
         TwodHistory::create([
             "date" => date('Y-m-d'),
-            "time" => $time,
+            "time" => "18:00",
             "number"  => $number[0][1].$number[1][1],
-            "currency_one" => number_format($number[0][0],3),
-            "currency_two" => number_format($number[1][0],3),
+            "currency_one" => number_format($number[0][0],2),
+            "currency_two" => number_format($number[1][0],2),
             "currency_one_name" => "BTC/BUSD",
             "currency_two_name"  => "ETH/BUSD"
         ]);
@@ -67,9 +67,9 @@ class FourCron extends Command
             $time = Carbon::parse(date("H:i",$value[0]/1000))->setTimezone('Asia/Yangon')->format("H:i");
             if($time == $manuallyTime)
             {
-               $closeV = explode(".",$value[4]);
-               $getAfterdot = str_split($closeV[1]);//after dot value
-               $firstNumber  = $getAfterdot[1];
+               $closeV = explode(".",$value[4]);// array length 2 
+               $getAfterdot = str_split($closeV[1]);//second room
+               $firstNumber  = $getAfterdot[0];//get first char
                 $arr[0] = array($value[4],$firstNumber);
             }
         }
@@ -85,9 +85,9 @@ class FourCron extends Command
             if($time == $manuallyTime)
             {
                $closeV = explode(".",$value[4]);
-               $getAfterdot = str_split($closeV[1]);//after dot value
-               $secondNumber  = $getAfterdot[1];
-               $arr[1]=array($value[4],$secondNumber);
+               $getAfterdot = str_split($closeV[1]);//after dot value second room
+               $secondNumber  = $getAfterdot[0];
+                $arr[1]=array($value[4],$secondNumber);
             }
         }
         return $arr;
