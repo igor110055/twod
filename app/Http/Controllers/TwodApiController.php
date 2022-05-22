@@ -31,6 +31,7 @@ class TwodApiController extends Controller
                                 ->select("twod_histories.id","twod_histories.date","twod_histories.time",
                                 "twod_histories.number","twod_histories.currency_one",
                                 "twod_histories.currency_two","twod_histories.currency_one_name","twod_histories.currency_two_name")
+                                ->orderBy("twod_histories.id","DESC")
                                 ->get();
                     return response()->json([
                         'status'  => true,
@@ -204,11 +205,11 @@ class TwodApiController extends Controller
                 "id"=>0,
                 "date"=> date("Y-m-d"),
                 "time"=> $time,
-                "number"=>"",
-                "currency_one"=> 0,
-                "currency_two" => 0,
-                "currency_one_name"=> 0,
-                "currency_two_name"=>0
+                "number"=>"--",
+                "currency_one"=> "--",
+                "currency_two" => "--",
+                "currency_one_name"=> "BTC/BUSD",
+                "currency_two_name"=>"ETH/BUSD"
             );
         }
 
