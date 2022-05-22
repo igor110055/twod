@@ -47,6 +47,7 @@ class TwodApiController extends Controller
                                     "number","currency_one","currency_two",
                                     "currency_one_name","currency_two_name"
                                 )
+                                ->orderBy("id","DESC")
                                 ->get();
                     $lists = $this->extraRespone($twodhistory);
                     return response()->json([
