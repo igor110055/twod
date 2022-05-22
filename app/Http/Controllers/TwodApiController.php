@@ -20,20 +20,44 @@ class TwodApiController extends Controller
         {
             if($request->apiKey == "myanmarbet")
             {
-                $date = date("Y-m-d");
-                $date = strtotime($date);
-                $date = strtotime("-7 day", $date);
-                $last7day =date('Y-m-d', $date);
-                $twodhistory = TwodHistory::whereDate("date",">=", $last7day)
-                            ->select("twod_histories.id","twod_histories.date","twod_histories.time",
-                            "twod_histories.number","twod_histories.currency_one",
-                            "twod_histories.currency_two","twod_histories.currency_one_name","twod_histories.currency_two_name")
-                            ->get();
-                return response()->json([
-                    'status'  => true,
-                    'msg'     => 'Get last 7 days',
-                    'data'  => $twodhistory
-                ]);
+                if($request->get("categoryId") == 1)
+                {
+                    //last 7 day
+                    $date = date("Y-m-d");
+                    $date = strtotime($date);
+                    $date = strtotime("-7 day", $date);
+                    $last7day =date('Y-m-d', $date);
+                    $twodhistory = TwodHistory::whereDate("date",">=", $last7day)
+                                ->select("twod_histories.id","twod_histories.date","twod_histories.time",
+                                "twod_histories.number","twod_histories.currency_one",
+                                "twod_histories.currency_two","twod_histories.currency_one_name","twod_histories.currency_two_name")
+                                ->get();
+                    return response()->json([
+                        'status'  => true,
+                        'msg'     => 'Get last 7 days',
+                        'data'  => $twodhistory
+                    ]);
+                }else if($request->get("categoryId") == 0)
+                {
+                    //today
+                    $date = date("Y-m-d");
+                    $twodhistory = TwodHistory::whereDate("date", $date)
+                                ->select("id","date","time",
+                                    "number","currency_one","currency_two",
+                                    "currency_one_name","currency_two_name"
+                                )
+                                ->get();
+                    $lists = $this->extraRespone($twodhistory);
+                    return response()->json([
+                        'status'  => true,
+                        'msg'     => 'Get for today',
+                        'data'  => $lists
+                    ]);
+                }else
+                {
+                    return $this->throwWrongCredentials();
+                }
+                
             }else
             {
                 return $this->throwWrongCredentials();

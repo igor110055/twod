@@ -49,10 +49,10 @@ class OneCron extends Command
             "date" => date('Y-m-d'),
             "time" => $time,
             "number"  => $number[0][1].$number[1][1],
-            "currency_one" => $number[0][0],
-            "currency_two" => $number[1][0],
-            "currency_one_name" => "BTCBUSD",
-            "currency_two_name"  => "ETHBUSD"
+            "currency_one" => number_format($number[0][0],2),
+            "currency_two" => number_format($number[1][0],2),
+            "currency_one_name" => "BTC/BUSD",
+            "currency_two_name"  => "ETH/BUSD"
         ]);
     }
     public function btcEth($manuallyTime)
