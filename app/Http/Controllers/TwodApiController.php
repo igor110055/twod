@@ -188,19 +188,19 @@ class TwodApiController extends Controller
         {
           if($i == 0)
           {
-              $time ="10:30";
+              $time ="10:00";
           }else if($i == 1)
           {
-              $time ="12:30";
+              $time ="12:00";
           }else if($i == 2)
           {
-              $time = "14:30";
+              $time = "14:00";
           }else if($i == 3)
           {
-              $time = "16:30";
+              $time = "16:00";
           }else if($i == 4)
           {
-              $time = "18:30";
+              $time = "18:00";
           }
             $array[$i] = array(
                 "id"=>0,
