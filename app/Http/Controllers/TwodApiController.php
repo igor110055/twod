@@ -50,6 +50,7 @@ class TwodApiController extends Controller
                                 ->orderBy("id","DESC")
                                 ->get();
                     $allBlank = $this->makeTodayBlackIntake();
+                    /*
                     for($i = 0; $i < count($allBlank); $i++){
                         for($j =0; $j < count($twodhistory); $j++){
                             if($allBlank[$i]['time'] == $twodhistory[$j]['time']){
@@ -57,6 +58,7 @@ class TwodApiController extends Controller
                             }
                         }
                     }
+                    */
 
 
                     $lists = $allBlank; //$this->extraRespone($twodhistory);
