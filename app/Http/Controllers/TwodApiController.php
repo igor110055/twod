@@ -186,19 +186,19 @@ class TwodApiController extends Controller
         date_default_timezone_set("Asia/Yangon");
         for($i=$initialArray;$i<5;$i++)
         {
-          if($i == 0)
+          if($array[$i]["time"] == "10:00")
           {
               $time ="10:00";
-          }else if($i == 1)
+          }else if($array[$i]["time"] == "12:00")
           {
               $time ="12:00";
-          }else if($i == 2)
+          }else if($array[$i]["time"] == "14:00")
           {
               $time = "14:00";
-          }else if($i == 3)
+          }else if($array[$i]["time"] == "16:00")
           {
               $time = "16:00";
-          }else if($i == 4)
+          }else if($array[$i]["time"] == "18:00")
           {
               $time = "18:00";
           }
@@ -213,7 +213,6 @@ class TwodApiController extends Controller
                 "currency_two_name"=>"ETH/BUSD"
             );
         }
-
         return $array;
     }
     public function btcEth()
