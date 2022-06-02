@@ -199,6 +199,13 @@ class TwodApiController extends Controller
           }else if($i == 1)
           {
               $time ="12:00";
+              foreach($array as $key=>$data)
+              {
+                  if($data["time"] != "12:00")
+                  {
+                    $time="12:00";
+                  }
+              }
           }else if($i == 2)
           {
               $time = "14:00";
