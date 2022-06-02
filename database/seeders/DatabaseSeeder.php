@@ -16,27 +16,27 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         $timelists =array(
             array(
-                'name'  =>'10:30',
+                'name'  =>'10:00',
                 'created_at' => now()->toDateTimeString(),
                 'updated_at' => now()->toDateTimeString()
             ),
             array(
-                'name' =>'12:30',
+                'name' =>'12:00',
                 'created_at' => now()->toDateTimeString(),
                 'updated_at' => now()->toDateTimeString()
             ),
             array(
-                'name'  =>'14:30',
+                'name'  =>'14:00',
                 'created_at' => now()->toDateTimeString(),
                 'updated_at' => now()->toDateTimeString()
             ),
             array(
-                'name'  =>'16:30',
+                'name'  =>'16:00',
                 'created_at' => now()->toDateTimeString(),
                 'updated_at' => now()->toDateTimeString()
             ),
             array(
-                'name'  =>'18:30',
+                'name'  =>'18:00',
                 'created_at' => now()->toDateTimeString(),
                 'updated_at' => now()->toDateTimeString()
             )
