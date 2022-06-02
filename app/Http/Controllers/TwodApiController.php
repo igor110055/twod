@@ -184,11 +184,18 @@ class TwodApiController extends Controller
     {
         $initialArray = count($array);
         date_default_timezone_set("Asia/Yangon");
-        for($i=$initialArray;$i<5;$i++)
+        for($i=0;$i<5;$i++)
         {
           if($i == 0)
           {
               $time ="10:00";
+              foreach($array as $key=>$data)
+              {
+                  if($data["time"] != "10:00")
+                  {
+                    $time="10:00";
+                  }
+              }
           }else if($i == 1)
           {
               $time ="12:00";
@@ -215,6 +222,7 @@ class TwodApiController extends Controller
         }
         return $array;
     }
+  
     public function btcEth()
     {
         $manuallyTime="06:20";
