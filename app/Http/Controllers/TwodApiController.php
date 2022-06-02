@@ -49,7 +49,17 @@ class TwodApiController extends Controller
                                 )
                                 ->orderBy("id","DESC")
                                 ->get();
-                    $lists = $this->extraRespone($twodhistory);
+                    $allBlank = $this->makeTodayBlackIntake();
+                    for($i = 0; $i < count($allBlank); $i++){
+                        for($j =0; $j < count($twodhistory); $j++){
+                            if($allBlank[$i]['time'] == $twodhistory[$j]['time']){
+                                $allBlank[$i] = $twodhistory[$j];
+                            }
+                        }
+                    }
+
+
+                    $lists = $allBlank; //$this->extraRespone($twodhistory);
                     return response()->json([
                         'status'  => true,
                         'msg'     => 'Get for today',
@@ -214,6 +224,30 @@ class TwodApiController extends Controller
             );
         }
         return $array;
+    }
+
+    public function getBlankIntake($time){
+        return array(
+            "id"=>0,
+            "date"=> date("Y-m-d"),
+            "time"=> $time,
+            "number"=>"--",
+            "currency_one"=> "--",
+            "currency_two" => "--",
+            "currency_one_name"=> "BTC/BUSD",
+            "currency_two_name"=>"ETH/BUSD"
+        );
+    }
+
+    public function makeTodayBlackIntake(){
+        $data = [
+            $this->extraRespone("10:00"),
+            $this->extraRespone("12:00"),
+            $this->extraRespone("14:00"),
+            $this->extraRespone("16:00"),
+            $this->extraRespone("18:00"),
+        ];
+        return $data;
     }
   
     public function btcEth()
