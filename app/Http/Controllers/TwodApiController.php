@@ -184,28 +184,14 @@ class TwodApiController extends Controller
     {
         $initialArray = count($array);
         date_default_timezone_set("Asia/Yangon");
-        for($i=0;$i<5;$i++)
+        for($i=$initialArray;$i<5;$i++)
         {
           if($i == 0)
           {
               $time ="10:00";
-              foreach($array as $key=>$data)
-              {
-                  if($data["time"] != "10:00")
-                  {
-                    $time="10:00";
-                  }
-              }
           }else if($i == 1)
           {
               $time ="12:00";
-              foreach($array as $key=>$data)
-              {
-                  if($data["time"] != "12:00")
-                  {
-                    $time="12:00";
-                  }
-              }
           }else if($i == 2)
           {
               $time = "14:00";
