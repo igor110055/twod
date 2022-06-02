@@ -243,11 +243,11 @@ class TwodApiController extends Controller
 
     public function makeTodayBlackIntake(){
         $data = [
-            $this->extraRespone("10:00"),
-            $this->extraRespone("12:00"),
-            $this->extraRespone("14:00"),
-            $this->extraRespone("16:00"),
-            $this->extraRespone("18:00"),
+            $this->getBlankIntake("10:00"),
+            $this->getBlankIntake("12:00"),
+            $this->getBlankIntake("14:00"),
+            $this->getBlankIntake("16:00"),
+            $this->getBlankIntake("18:00"),
         ];
         return $data;
     }
