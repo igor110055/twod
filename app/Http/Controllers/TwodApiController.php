@@ -59,8 +59,6 @@ class TwodApiController extends Controller
                         }
                     }
                     
-
-
                     $lists = $allBlank; //$this->extraRespone($twodhistory);
                     return response()->json([
                         'status'  => true,
