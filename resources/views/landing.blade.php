@@ -47,7 +47,7 @@
         <!-- <img src="images/model-1.jpg" alt=""> -->
         <div class="slider-content">
           <h4>BTC / BUSD</h4>
-          <h2>အသိပေးစာသားလေး တခုခု ထည့်မည်</h2>
+          <h2>Myan Myan Bet - Crypto2D</h2>
           <a href="{{asset('images/myanmyanbet.apk')}}"><button type="button" class="buy-now-btn" name="button"><img src="{{asset('images/android.png')}}"></button></a>
         </div>
         <div class="number-pagination">
@@ -59,7 +59,7 @@
         <!-- <img src="images/model-2.jpg" alt=""> -->
         <div class="slider-content">
           <h4>ETH / BUSD</h4>
-          <h2>အသိပေးစာသားလေး တခုခု ထည့်မည်</h2>
+          <h2>Myan Myan Bet - Crypto2D</h2>
           <a href="{{asset('images/myanmyanbet.apk')}}"><button type="button" class="buy-now-btn" name="button"><img src="{{asset('images/android.png')}}"> </button></a>
         </div>
         <div class="number-pagination">
