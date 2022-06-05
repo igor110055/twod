@@ -26,7 +26,7 @@
         <a href="#">Accessories</a> -->
       </div>
       <div class="navigation-center title">
-        Myan Myan Bet
+        Myan Myan Bet - Crypto2D
       </div>
       <div class="navigation-right">
         <!-- <a href="#"><img src="images/shopping-bag.png" alt=""></a> -->
