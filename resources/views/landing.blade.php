@@ -44,7 +44,7 @@
       </div>
       <!-- Slider #1 -->
       <div class="slider slide-3">
-        <!-- <img src="images/model-1.jpg" alt=""> -->
+        <img src="images/model-1.jpg" alt="">
         <div class="slider-content">
           <h4>BTC / BUSD</h4>
           <h2>Myan Myan Bet - Crypto2D</h2>
@@ -56,7 +56,7 @@
       </div>
       <!-- Slider #2 -->
       <div class="slider slide-2">
-        <!-- <img src="images/model-2.jpg" alt=""> -->
+        <img src="images/model-2.jpg" alt="">
         <div class="slider-content">
           <h4>ETH / BUSD</h4>
           <h2>Myan Myan Bet - Crypto2D</h2>

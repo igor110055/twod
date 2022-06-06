@@ -50,7 +50,7 @@
   }
   
   .navigation-center {
-    margin-right: 85px;
+    margin-right: 50px;
   }
   
   .navigation-right {
@@ -170,8 +170,8 @@
   .slider > img {
     position: absolute;
     right: 10%;
-    bottom: 0;
-    height: 100%;
+    bottom: 20%;
+    height: 60%;
     opacity: 0;
     -webkit-transform: translateX(500px);
     transform: translateX(500px);
@@ -334,7 +334,10 @@
     }
   
     .slider-content {
-      padding: 0 2%
+      padding: 0 2%;
+      z-index: 500;
+      bottom:13%;
+      position:absolute;
     }
   
     .navigation {
@@ -361,13 +364,17 @@
     .slider .buy-now-btn:after {
       top: 15px;
     }
-  
     .slider > img {
-      right: 2%;
+      /* right: 2%; */
+      z-index:1;
+      bottom:27%;
     }
   
     .slide-1 > img {
       right: -110px;
+    }
+    .title{
+      font-size: 14px !important;
     }
   }
   
