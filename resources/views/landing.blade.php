@@ -7,7 +7,7 @@
     <meta name="keywords" content="Crypto 2d">
     <meta name="author" content="Myan Myan Bet" />
     <!-- Favicon icon -->
-    <link rel="icon" href="{{asset('images/favicon.png')}}" type="image/x-icon">
+    <link rel="icon" href="{{asset('images/favicon.png')}}" size="32" type="image/x-icon">
     <title>Myan Myan Bet</title>
     <!-- Styles -->
     <link rel="stylesheet" href="{{asset('css/landing.css')}}">
@@ -20,7 +20,7 @@
     <!-- Navigation -->
     <div class="navigation">
       <div class="navigation-left">
-        <a href="#"><img src="{{asset('images/favicon.png')}}" alt=""></a>
+        <a href="#"><img src="{{asset('images/logo.png')}}" alt=""></a>
         <!-- <a href="#">Shoes</a>
         <a href="#">Clothes</a>
         <a href="#">Accessories</a> -->
