@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\DB;
 use App\Models\TwodHistory;
 use Carbon\Carbon;
 class TwodApiController extends Controller
@@ -28,7 +29,7 @@ class TwodApiController extends Controller
                     $date = strtotime("-5 day", $date);
                     $last5day =date('Y-m-d', $date);
                     $twodhistory = TwodHistory::whereDate("date",">=", $last5day)
-                                ->select("twod_histories.id","twod_histories.date","twod_histories.time",
+                                ->select("twod_histories.id",DB::raw('DATE_FORMAT(twod_histories.date, "%d-%m-%Y") as date'),"twod_histories.time",
                                 "twod_histories.number","twod_histories.currency_one",
                                 "twod_histories.currency_two","twod_histories.currency_one_name","twod_histories.currency_two_name")
                                 ->orderBy("twod_histories.id","DESC")
@@ -43,7 +44,7 @@ class TwodApiController extends Controller
                     //today
                     $date = date("Y-m-d");
                     $twodhistory = TwodHistory::whereDate("date", $date)
-                                ->select("id","date","time",
+                                ->select("id",DB::raw('DATE_FORMAT(twod_histories.date, "%d-%m-%Y") as date'),"time",
                                     "number","currency_one","currency_two",
                                     "currency_one_name","currency_two_name"
                                 )
@@ -229,7 +230,7 @@ class TwodApiController extends Controller
     public function getBlankIntake($time){
         return array(
             "id"=>0,
-            "date"=> date("Y-m-d"),
+            "date"=> date("d-m-Y"),
             "time"=> $time,
             "number"=>"--",
             "currency_one"=> "--",
