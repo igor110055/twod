@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section("title","Number Lists")
+@section("title","2D Numbers")
 @section('content')
 <div class="bg-secondary rounded h-100 p-4">
 	<form class="form">
