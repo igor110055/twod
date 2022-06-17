@@ -50,8 +50,8 @@
 					<th scope="col">Date</th>
 					<th scope="col">Time</th>
 					<th scope="col">Amount</th>
-					<th scope="col">Phone</th>
 					<th scope="col">Name</th>
+					<th scope="col">Username</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -61,8 +61,9 @@
 					<td>13-5-2022</td>
 					<td>10:00</td>
 					<td>1000</td>
-					<td>09777323232</td>
 					<td>Aung Aung</td>
+					<td>user0001</td>
+
 				</tr>
 				<tr>
 					<th scope="row">2</th>
@@ -70,8 +71,8 @@
 					<td>13-5-2022</td>
 					<td>10:00</td>
 					<td>1000</td>
-					<td>09777323232</td>
 					<td>Aung Aung</td>
+					<td>user0001</td>
 				</tr>
 				<tr>
 					<th scope="row">3</th>
@@ -79,8 +80,8 @@
 					<td>13-5-2022</td>
 					<td>10:00</td>
 					<td>1000</td>
-					<td>09777323232</td>
 					<td>Aung Aung</td>
+					<td>user0001</td>
 				</tr>
 				<tr>
 					<th scope="row">4</th>
@@ -88,8 +89,8 @@
 					<td>13-5-2022</td>
 					<td>10:00</td>
 					<td>1000</td>
-					<td>09777323232</td>
 					<td>Aung Aung</td>
+					<td>user0001</td>
 				</tr>
 				<tr>
 					<th scope="row">5</th>
@@ -97,8 +98,8 @@
 					<td>13-5-2022</td>
 					<td>10:00</td>
 					<td>1000</td>
-					<td>09777323232</td>
 					<td>Aung Aung</td>
+					<td>user0001</td>
 				</tr>
 				<tr>
 					<th scope="row">6</th>
@@ -106,8 +107,8 @@
 					<td>13-5-2022</td>
 					<td>10:00</td>
 					<td>5000</td>
-					<td>09777323232</td>
 					<td>Aung Aung</td>
+					<td>user0001</td>
 				</tr>
 				<tr>
 					<th scope="row">7</th>
@@ -115,8 +116,8 @@
 					<td>13-5-2022</td>
 					<td>10:00</td>
 					<td>1000</td>
-					<td>09777323232</td>
 					<td>Aung Aung</td>
+					<td>user0001</td>
 				</tr>
 				<tr>
 					<th scope="row">8</th>
@@ -124,8 +125,8 @@
 					<td>13-5-2022</td>
 					<td>10:00</td>
 					<td>3000</td>
-					<td>09777323232</td>
 					<td>Aung Aung</td>
+					<td>user0001</td>
 				</tr>
 				<tr>
 					<th scope="row">9</th>
@@ -133,8 +134,8 @@
 					<td>13-5-2022</td>
 					<td>10:00</td>
 					<td>1000</td>
-					<td>09777323232</td>
 					<td>Aung Aung</td>
+					<td>user0001</td>
 				</tr>
 				<tr>
 					<th scope="row">10</th>
@@ -142,8 +143,8 @@
 					<td>13-5-2022</td>
 					<td>10:00</td>
 					<td>2000</td>
-					<td>09777323232</td>
 					<td>Aung Aung</td>
+					<td>user0001</td>
 				</tr>
 				<tr>
 					<td colspan="4" style="text-align:right">စုစုပေါင်း</td>

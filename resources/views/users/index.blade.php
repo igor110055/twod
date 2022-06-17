@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section("title","Number Lists")
+@section("title","User Lists")
 @section('content')
 <div class="bg-secondary rounded h-100 p-4">
 	<form class="form">
@@ -34,7 +34,7 @@
 				<tr>
 					<th scope="col">#</th>
 					<th scope="col">Name</th>
-					<th scope="col">Phone Number</th>
+					<th scope="col">Username</th>
 					<th scope="col">Point</th>
                     <th scope="col">Created at</th>
 					<th scope="col">Detail</th>
@@ -44,7 +44,7 @@
 				<tr>
 					<th scope="row">1</th>
 					<td>Aung Aung</td>
-					<td>09798382832</td>
+					<td>user0001</td>
 					<td>100000</td>
                     <td>14-05-2022</td>
 					<td>
@@ -54,7 +54,7 @@
 				<tr>
 					<th scope="row">2</th>
 					<td>Aung Soe</td>
-					<td>0964747474</td>
+					<td>user0002</td>
 					<td>100000</td>
                     <td>14-05-2022</td>
 					<td>
@@ -64,7 +64,7 @@
                 <tr>
 					<th scope="row">3</th>
 					<td>Aung Min</td>
-					<td>0974774743</td>
+					<td>user0003</td>
 					<td>100000</td>
                     <td>14-05-2022</td>
 					<td>
@@ -74,7 +74,7 @@
                 <tr>
 					<th scope="row">4</th>
 					<td>Aung Tint</td>
-					<td>09473743</td>
+					<td>user0004</td>
 					<td>100000</td>
                     <td>14-05-2022</td>
 					<td>
@@ -84,7 +84,7 @@
                 <tr>
 					<th scope="row">5</th>
 					<td>Thin Thin</td>
-					<td>093477243</td>
+					<td>user0005</td>
 					<td>20000</td>
                     <td>14-05-2022</td>
 					<td>
